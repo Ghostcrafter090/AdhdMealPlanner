@@ -1,0 +1,1 @@
+To generate a meal plan, run: `py main.py`

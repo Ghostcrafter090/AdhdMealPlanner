@@ -1,0 +1,240 @@
+{
+    "mains": {
+        "fish": {
+            "vegitables": "all",
+            "starches": "all",
+            "chance": 100,
+            "count": 4
+        },
+        "tacos": {
+            "vegitables": false,
+            "starches": false,
+            "chance": 100,
+            "count": 2
+        },
+        "steak": {
+            "vegitables": "all",
+            "starches": "all",
+            "chance": 75,
+            "count": 2
+        },
+        "chickenVeggieHash": {
+            "vegitables": false,
+            "starches": false,
+            "chance": 75,
+            "count": 1
+        },
+        "breadedFish": {
+            "vegitables": "all",
+            "starches": "all",
+            "chance": 50,
+            "count": 2
+        },
+        "chickenBreast": {
+            "vegitables": "all",
+            "starches": "all",
+            "alternates": [
+                "mushroomSoup",
+                "tomatoes",
+                false
+            ],
+            "chance": 100,
+            "count": 2
+        },
+        "porkChops": {
+            "vegitables": "all",
+            "starches": "all",
+            "alternates": [
+                "mushroomSoup",
+                "tomatoes",
+                false
+            ],
+            "chance": 100,
+            "count": 2
+        },
+        "breadedChicken": {
+            "vegitables": "all",
+            "starches": "all",
+            "chance": 75,
+            "count": 2
+        },
+        "pasta": {
+            "vegitables": false,
+            "starches": [
+                "toast",
+                false
+            ],
+            "chance": 100,
+            "count": 1
+        },
+        "burgers": {
+            "vegitables": [
+                "smoothie",
+                "pineapple",
+                "mango",
+                "grapes",
+                "strawberries",
+                "apples",
+                false
+            ],
+            "starches": [
+                "hashbrowns",
+                "taterTots",
+                "fries"
+            ],
+            "chance": 100,
+            "count": 1
+        },
+        "fajitas": {
+            "vegitables": false,
+            "starches": false,
+            "chance": 100,
+            "count": 1
+        },
+        "ham": {
+            "vegitables": "all",
+            "starches": "all",
+            "chance": 50,
+            "count": 1
+        },
+        "sausages": {
+            "vegitables": "all",
+            "starches": "all",
+            "chance": 100,
+            "count": 2
+        },
+        "nachos": {
+            "vegitables": false,
+            "starches": false,
+            "chance": 100,
+            "count": 1
+        },
+        "cornedBeefHash": {
+            "vegitables": false,
+            "starches": false,
+            "chance": 50,
+            "count": 2
+        },
+        "meatLoaf": {
+            "vegitables": "all",
+            "starches": "all",
+            "chance": 50,
+            "count": 1
+        },
+        "tunaSandwichs": {
+            "vegitables": "all",
+            "starches": false,
+            "chance": 100,
+            "count": 2
+        },
+        "beansOnToast": {
+            "vegitables": [
+                "all",
+                false
+            ],
+            "starches": false,
+            "chance": 100,
+            "count": 2
+        },
+        "bacon": {
+            "vegitables": [
+                "pineapple",
+                "mango",
+                "grapes",
+                "strawberries",
+                "smoothie",
+                "apples",
+                "pears"
+            ],
+            "starches": [
+                "fries",
+                "hashbrowns",
+                "taterTots"
+            ],
+            "alternates": [
+                "grilledCheese",
+                "toast",
+                "pancakes",
+                "waffles",
+                false
+            ],
+            "chance": 50,
+            "count": 2
+        },
+        "fastFryPork": {
+            "vegitables": "all",
+            "starches": "all",
+            "chance": 25,
+            "count": 2
+        },
+        "lasagna": {
+            "vegitables": false,
+            "starches": [
+                "toast",
+                false
+            ],
+            "chance": 25,
+            "count": 4
+        },
+        "baconToast": {
+            "vegitables": "all",
+            "starches": [
+                "hashbrowns",
+                "taterTots",
+                "fries",
+                false
+            ],
+            "alternates": [
+                "smoothie",
+                false
+            ],
+            "chance": 50,
+            "count": 1
+        },
+        "grilledCheese": {
+            "vegitables": [
+                "apples",
+                "pears",
+                false
+            ],
+            "starches": false,
+            "alternates": [
+                "chickenNoodleSoup",
+                "tomatoSoup"
+            ],
+            "chance": 100,
+            "count": 2
+        }
+    },
+    "vegitables": [
+        ["carrots", 3, 1],
+        ["broccoli", 5, 1],
+        ["pineapple", 2, 0.25],
+        ["mango", 2, 0.25],
+        ["grapes", 2, 0.25],
+        ["strawberries", 1, 0.25],
+        ["smoothie", 2, 1],
+        ["corn", 2, 0.15],
+        ["peppers", 2, 0.5],
+        ["apples", 2, 0.5],
+        ["sugarSnaps", 2, 1],
+        ["pears", 2, 0.5],
+        ["tomatoSoup", 2, 0.5],
+        ["candyCarrots", 1, 0.5],
+        ["carrotFries", 1, 0.75]
+    ],
+    "starches": [
+        ["stuffing", 5, 1],
+        ["fries", 5, 1],
+        ["hashbrowns", 5, 1],
+        ["grilledCheese", 3, 0.5],
+        ["rice", 5, 1],
+        ["taterTots", 2, 1],
+        ["pierogies", 2, 0.75],
+        ["toast", 5, 1],
+        ["pancakes", 1, 0.25],
+        ["waffles", 1, 0.25],
+        ["mashedPotatoes", 1, 0.05],
+        ["chickenNoodleSoup", 1, 0.2]
+    ]
+}
