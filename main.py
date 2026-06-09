@@ -1,8 +1,52 @@
 import modules.pytools as pytools
 import random
 
+hasSaid = []
+
+class globals:
+    aProgram = False
+
+def oneTimeMessage(text):
+    if text not in hasSaid:
+        print(text)
+        hasSaid.append(text)
+
 def getMealProgram():
-    return pytools.IO.getJson("program.json")
+    
+    if not globals.aProgram:
+    
+        aProgram = pytools.IO.getJson("program.json")
+        newProgram = aProgram
+        for aMain in aProgram["mains"]:
+            if "temp_cost" in newProgram["mains"][aMain]:
+                if pytools.clock.dateArrayToUTC(newProgram["mains"][aMain]["temp_cost"][1]) > pytools.clock.dateArrayToUTC(pytools.clock.getDateTime()):
+                    oneTimeMessage("Adjusting cost for main " + str(aMain) + " from " + str(newProgram["mains"][aMain]["cost"]) + " to " + str(newProgram["mains"][aMain]["temp_cost"][0]))
+                    newProgram["mains"][aMain]["cost"] = newProgram["mains"][aMain]["temp_cost"][0]
+        
+        i = 0
+        for aVegitable in aProgram["vegetables"]:
+            if len(aVegitable) > 4:
+                if pytools.clock.dateArrayToUTC(aVegitable[4][1]) > pytools.clock.dateArrayToUTC(pytools.clock.getDateTime()):
+                    oneTimeMessage("Adjusting cost for vegitable " + str(aVegitable[0]) + " from " + str(newProgram["vegetables"][i][3]) + " to " + str(aVegitable[4][0]))
+                    newProgram["vegetables"][i][3] = aVegitable[4][0]
+            
+            i = i + 1
+            
+        i = 0
+        for aStarch in aProgram["starches"]:
+            if len(aStarch) > 4:
+                if pytools.clock.dateArrayToUTC(aStarch[4][1]) > pytools.clock.dateArrayToUTC(pytools.clock.getDateTime()):
+                    oneTimeMessage("Adjusting cost for vegitable " + str(aStarch[0]) + " from " + str(newProgram["starches"][i][3]) + " to " + str(aStarch[4][0]))
+                    newProgram["starches"][i][3] = aStarch[4][0]
+            
+            i = i + 1
+    
+        globals.aProgram = newProgram
+    
+    return globals.aProgram
+
+def getMealChance(cost): 
+    return ((0.985779 ** (18.89997 * (float(cost) - 2.22658)) + 0.15198) ** 1.4) / 1.3
 
 class meal:
     
@@ -35,7 +79,7 @@ class meal:
                 
             theMain = aMain
 
-            return theMain
+            return theMain, aListOfMains[theMain]["cost"]
     
     class vegitable:
         
@@ -49,15 +93,18 @@ class meal:
         
         def select(aMain):
             aListOfMains = getMealProgram()["mains"]
-            aListOfVegitables = getMealProgram()["vegitables"]
+            aListOfVegitables = getMealProgram()["vegetables"]
             theChoices = []
             
-            if aListOfMains[aMain]["vegitables"]:
-                if aListOfMains[aMain]["vegitables"] == "all":
+            if aListOfMains[aMain]["vegetables"] == False:
+                return False, 0.0
+            
+            if aListOfMains[aMain]["vegetables"]:
+                if aListOfMains[aMain]["vegetables"] == "all":
                     theChoices = aListOfVegitables
                 
-                elif type(aListOfMains[aMain]["vegitables"]) == list:
-                    for vegitable in aListOfMains[aMain]["vegitables"]:
+                elif type(aListOfMains[aMain]["vegetables"]) == list:
+                    for vegitable in aListOfMains[aMain]["vegetables"]:
                         if vegitable == "all":
                             theChoices.extend(aListOfVegitables)
                         elif vegitable:
@@ -88,9 +135,11 @@ class meal:
                 loopCount = loopCount + 1
                 
             theVegitable = aVegitable
-
-            return theVegitable[0]
-
+            
+            try:
+                return theVegitable[0], theVegitable[3]
+            except:
+                return theVegitable[0], 0.0
     class starch:
         
         aCount = {}
@@ -105,6 +154,9 @@ class meal:
             aListOfMains = getMealProgram()["mains"]
             aListOfStarchs = getMealProgram()["starches"]
             theChoices = []
+            
+            if aListOfMains[aMain]["starches"] == False:
+                return False, 0.0
             
             if aListOfMains[aMain]["starches"]:
                 if aListOfMains[aMain]["starches"] == "all":
@@ -143,7 +195,10 @@ class meal:
                 
             theStarch = aStarch
 
-            return theStarch[0]
+            try:
+                return theStarch[0], theStarch[3]
+            except:
+                return theStarch[0], 0.0
                     
     class alternate:
         def select(aMain):
@@ -153,15 +208,37 @@ class meal:
             if "alternates" in aListOfMains[aMain]:
                 theAlternate = random.choice(aListOfMains[aMain]["alternates"])
 
-            return theAlternate
+            cost = 1.57
+            if theAlternate in getMealProgram()["alternates"]:
+                cost = getMealProgram()["alternates"][theAlternate]
+            
+            return theAlternate, cost
         
-    def generate():
-        aMain = meal.main.select()
-        aVegitable = meal.vegitable.select(aMain)
-        aStarch = meal.starch.select(aMain)
-        anAlternate = meal.alternate.select(aMain)
+    def generate(currentBudget, totalCost, currentDay):
+        def _generate():
+            currentCost = 1000
+            currentMeal = []
+            loopCount = 0
+            
+            while (((currentBudget - totalCost) / ((((-(((currentDay + 1) - 7.5) / 2.754) ** 2) + 6.63) / 1.5) + 1.5)) < currentCost) and (loopCount < 100):
+                aMain, aMainCost = meal.main.select()
+                aVegitable, aVegitableCost = meal.vegitable.select(aMain)
+                aStarch, aStarchCost = meal.starch.select(aMain)
+                anAlternate, anAlternateCost = meal.alternate.select(aMain)
+                
+                loopCount = loopCount + 1
+                
+                if (aMainCost + aVegitableCost + aStarchCost + anAlternateCost) < currentCost:
+                    currentCost = (aMainCost + aVegitableCost + aStarchCost + anAlternateCost)
+                    currentMeal = [aMain, aVegitable, aStarch, anAlternate]
         
-        return [aMain, aVegitable, aStarch, anAlternate]
+            return [*currentMeal, currentCost]
+        
+        out = _generate()
+        while (random.random() * 2) < getMealChance(out[4]):
+            out = _generate()
+            
+        return out
     
     def prettyPrint(aMeal):
         strf = ""
@@ -179,27 +256,31 @@ class meal:
         elif aMeal[1]:
             strf = strf + " with " + aMeal[1]
             
-        return strf
+        return strf + ", costing roughly $" + str(round(aMeal[4], 2))
 
-
-def generateMealPlan():
+def generateMealPlan(currentBudget):
     
     meal.main.aCount = {}
     meal.vegitable.aCount = {}
     meal.starch.aCount = {}
     
+    
+    totalCost = 0
     mealList = []
     day = 0
     while day < 14:
         if ((day + 1) % 7) != 0:
-            mealList.append(meal.prettyPrint(meal.generate()))
+            aMeal = meal.generate(currentBudget, totalCost, day)
+            mealList.append(meal.prettyPrint(aMeal))
+            totalCost = totalCost + aMeal[4]
         else:
-            mealList.append("pizza")
+            mealList.append("pizza, costing roughly $8.86")
+            totalCost = totalCost + 8.86
         day = day + 1
         
-    return mealList
+    return [mealList, totalCost]
 
-def printMealPlan(aMealPlan):
+def printMealPlan(aMealPlan, aCost):
     dayFormat = {
         1: "Saturday  ",
         2: "Sunday    ",
@@ -217,7 +298,33 @@ def printMealPlan(aMealPlan):
         strf = strf + "\n" + dayFormat[(day + 1) % 7] + ": " + aMealPlan[day]
         day = day + 1
         
+    strf = strf + "\n" + "Total Estimated Plan Cost: $" + str(aCost)
+        
     return strf
 
 if __name__ == "__main__":
-    print(printMealPlan(generateMealPlan()))
+    mealPlanList = []
+    lastMin = ["", getMealProgram()["currentBudget"]]
+    
+    def _minPlan(x):
+        return x[1]
+    
+    i = 0
+    n = 0
+    while i < getMealProgram()["lowerAmountAggressivness"]:
+        print("Starting pass " + str(n) + " + (index " + str(i) + ", with cost of " + str(lastMin[1]) + ")...")
+        aMealPlan = generateMealPlan(getMealProgram()["currentBudget"])
+        while aMealPlan[1] > getMealProgram()["currentBudget"]:
+            aMealPlan = generateMealPlan(getMealProgram()["currentBudget"])
+        
+        mealPlanList.append(aMealPlan)
+        
+        if lastMin != min(mealPlanList, key=_minPlan):
+            i = 0
+        
+        lastMin = min(mealPlanList, key=_minPlan)
+        
+        i = i + 1
+        n = n + 1
+    
+    print(printMealPlan(*min(mealPlanList, key=_minPlan)))

@@ -18,7 +18,7 @@
                 "potatoWedges",
                 "mashedPotatoes"
             ],
-            "chance": 12,
+            "chance": 100,
             "count": 8,
             "cost": 1.6466666666666667,
             "difficulty": 1
@@ -27,14 +27,14 @@
             "vegetables": false,
             "starches": false,
             "chance": 100,
-            "count": 1,
-            "cost": 13.06,
-            "difficulty": 1
+            "count": 2,
+            "cost": 8.06,
+            "difficulty": 2.5
         },
         "steak": {
             "vegetables": "all",
             "starches": "all",
-            "chance": 9,
+            "chance": 75,
             "count": 2, 
             "cost": 5.985,
             "difficulty": 4
@@ -42,9 +42,9 @@
         "chickenVeggieHash": {
             "vegetables": false,
             "starches": false,
-            "chance": 9,
+            "chance": 75,
             "count": 1,
-            "cost": 9.8975,
+            "cost": 4.382499999999999,
             "difficulty": 4.5
         },
         "breadedFish": {
@@ -75,7 +75,7 @@
                 false,
                 false
             ],
-            "chance": 6,
+            "chance": 50,
             "count": 4,
             "cost": 3.6566666666666667,
             "difficulty": 1
@@ -108,7 +108,7 @@
                 "tomatoSoup",
                 false
             ],
-            "chance": 12,
+            "chance": 100,
             "count": 6,
             "cost": 9.0,
             "difficulty": 3
@@ -141,7 +141,7 @@
                 "tomatoSoup",
                 false
             ],
-            "chance": 12,
+            "chance": 100,
             "count": 8,
             "cost": 2.10,
             "difficulty": 2.5
@@ -175,7 +175,7 @@
                 false,
                 false
             ],
-            "chance": 9,
+            "chance": 75,
             "count": 6,
             "cost": 3.99,
             "difficulty": 1
@@ -186,9 +186,9 @@
                 "toast",
                 false
             ],
-            "chance": 75,
+            "chance": 100,
             "count": 1,
-            "cost": 16.00,
+            "cost": 15.00,
             "difficulty": 2
         },
         "burgers": {
@@ -209,23 +209,23 @@
             ],
             "chance": 100,
             "count": 1,
-            "cost": 9.290833333333333,
+            "cost": 8.290833333333333,
             "difficulty": 3
         },
         "fajitas": {
             "vegetables": false,
             "starches": false,
-            "chance": 25,
+            "chance": 100,
             "count": 1,
-            "cost": 14.515,
+            "cost": 9.00,
             "difficulty": 3.75
         },
         "wraps": {
             "vegetables": false,
             "starches": false,
-            "chance": 12,
+            "chance": 100,
             "count": 1,
-            "cost": 9.00,
+            "cost": 7.00,
             "difficulty": 3.75
         },
         "ham": {
@@ -254,7 +254,7 @@
                 "mashedPotatoes",
                 "potatoBites"
             ],
-            "chance": 25,
+            "chance": 50,
             "count": 1,
             "cost": 15.00,
             "temp_cost": [0.00, [2026, 5, 9, 0, 0, 0]], 
@@ -263,7 +263,7 @@
         "sausages": {
             "vegetables": "all",
             "starches": "all",
-            "chance": 50,
+            "chance": 100,
             "count": 2,
             "cost": 7.00,
             "difficulty": 1.5
@@ -273,13 +273,13 @@
             "starches": false,
             "chance": 100,
             "count": 1,
-            "cost": 18.05,
+            "cost": 15.05,
             "difficulty": 1
         },
         "cornedBeefHash": {
             "vegetables": false,
             "starches": false,
-            "chance": 6,
+            "chance": 50,
             "count": 2,
             "cost": 4.97,
             "difficulty": 3
@@ -303,15 +303,15 @@
                 "rice",
                 "mashedPotatoes"
             ],
-            "chance": 25,
+            "chance": 50,
             "count": 1,
-            "cost": 13.07,
+            "cost": 10.07,
             "difficulty": 4
         },
         "tunaSandwichs": {
             "vegetables": "all",
             "starches": false,
-            "chance": 12,
+            "chance": 100,
             "count": 2,
             "cost": 4.00,
             "difficulty": 1
@@ -322,7 +322,7 @@
                 false
             ],
             "starches": false,
-            "chance": 12,
+            "chance": 100,
             "count": 2,
             "cost": 5.98,
             "difficulty": 1
@@ -347,7 +347,6 @@
                 "toast",
                 "pancakes",
                 "waffles",
-                "eggsFromPlants",
                 false
             ],
             "chance": 50,
@@ -358,7 +357,7 @@
         "fastFryPork": {
             "vegetables": "all",
             "starches": "all",
-            "chance": 9,
+            "chance": 75,
             "count": 6,
             "cost": 1.40,
             "difficulty": 2
@@ -369,9 +368,9 @@
                 "toast",
                 false
             ],
-            "chance": 20,
+            "chance": 75,
             "count": 2,
-            "cost": 6.20,
+            "cost": 6.00,
             "difficulty": 4.5
         },
         "baconToast": {
@@ -384,10 +383,9 @@
             ],
             "alternates": [
                 "smoothie",
-                "eggsFromPlants",
                 false
             ],
-            "chance": 6,
+            "chance": 50,
             "count": 1,
             "cost": 5.00,
             "difficulty": 1.5
@@ -405,10 +403,9 @@
             "starches": false,
             "alternates": [
                 "chickenNoodleSoup",
-                "tomatoSoup",
-                "eggsFromPlants"
+                "tomatoSoup"
             ],
-            "chance": 12,
+            "chance": 100,
             "count": 6,
             "cost": 1.3325,
             "difficulty": 1
@@ -423,9 +420,9 @@
                 "grilledCheese",
                 false
             ],
-            "chance": 6,
+            "chance": 75,
             "count": 1,
-            "cost": 11.515,
+            "cost": 8.00,
             "difficulty": 3
         },
         "chili": {
@@ -438,49 +435,46 @@
                 "butteredBread",
                 false
             ],
-            "chance": 20,
+            "chance": 75,
             "count": 1,
-            "cost": 6.20,
+            "cost": 6.00,
             "difficulty": 4.5
         }
     },
     "vegetables": [
-        ["carrots", 3, 1, 0.9925, [0.0, [2026, 5, 9, 0, 0, 0]]],
+        ["carrots", 3, 1, 0.0, [0.0, [2026, 5, 9, 0, 0, 0]]],
         ["broccoli", 5, 1, 1.4],
         ["pineapple", 2, 0.25, 3.97],
         ["grapes", 1, 0.25, 10.96],
         ["strawberries", 1, 0.25, 3.94],
         ["smoothie", 2, 1, 2.96],
-        ["corn", 2, 0.8, 1.54],
-        ["peppers", 2, 0.5, 1.194],
-        ["apples", 2, 1, 1.39],
-        ["sugarSnaps", 2, 1, 1.4925],
+        ["corn", 2, 0.8, 0.0],
+        ["peppers", 2, 0.5, 0.0],
+        ["apples", 2, 0.5, 1.39],
+        ["sugarSnaps", 5, 1, 0.0],
         ["pears", 2, 0.5, 2.28],
         ["tomatoSoup", 2, 0.5, 1.57],
-        ["candyCarrots", 1, 0.5, 0.9925],
-        ["carrotFries", 1, 0.75, 0.9925],
-        ["salad", 7, 0.1, 3]
+        ["candyCarrots", 1, 0.5, 0.1],
+        ["carrotFries", 1, 0.75, 0.0],
+        ["salad", 7, 0.1, 2]
     ],
     "starches": [
         ["stuffing", 5, 1, 1.135],
-        ["fries", 5, 1, 0, [0.15, [2026, 9, 9, 0, 0, 0]]],
-        ["hashbrowns", 5, 1, 0, [0.15, [2026, 9, 9, 0, 0, 0]]],
+        ["fries", 5, 1, 0, [0, [2026, 9, 9, 0, 0, 0]]],
+        ["hashbrowns", 5, 1, 0, [0, [2026, 9, 9, 0, 0, 0]]],
         ["grilledCheese", 3, 0.5, 2.4674305555555556],
         ["rice", 5, 1, 0.1197],
-        ["potatoWedges", 2, 1, 0, [0.15, [2026, 9, 9, 0, 0, 0]]],
+        ["potatoWedges", 2, 1, 0, [0, [2026, 9, 9, 0, 0, 0]]],
         ["pierogies", 2, 0.75, 0.7475],
         ["toast", 5, 1, 0.3872222222222222],
         ["garlicBread", 5, 1, 0.3872222222222222],
         ["butteredBread", 5, 1, 0.3872222222222222],
         ["pancakes", 1, 0.25, 0.5],
         ["waffles", 1, 0.25, 0.5],
-        ["mashedPotatoes", 1, 0.05, 0.15, [0, [2026, 5, 9, 0, 0, 0]]],
+        ["mashedPotatoes", 1, 0.05, 0, [0, [2026, 5, 9, 0, 0, 0]]],
         ["chickenNoodleSoup", 1, 0.2, 0.86],
         ["potatoBites", 5, 1, 0]
     ],
-    "alternates": {
-        "eggsFromPlants": 9.97
-    },
-    "currentBudget": 95.00,
-    "lowerAmountAggressivness": 5
+    "currentBudget": 135.00,
+    "lowerAmountAggressivness": 100
 }
